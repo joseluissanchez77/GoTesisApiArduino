@@ -1,0 +1,18 @@
+CREAR STRUCT BASICA
+mkdir db configs models handlers
+
+COMPILAR
+go run main.go
+
+
+crear build
+go build main.go
+
+compilar build 
+./main
+
+crear imagen docker 
+docker image build -t hello .
+
+compilar imagen docker
+docker container run -p 9001:9050 hello

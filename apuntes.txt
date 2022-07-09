@@ -12,7 +12,7 @@ compilar build
 ./main
 
 crear imagen docker 
-docker image build -t hello .
+docker image build -t godocapi .
 
 compilar imagen docker
-docker container run -p 9001:9050 hello
+docker container run -p 7050:9001 godocapi

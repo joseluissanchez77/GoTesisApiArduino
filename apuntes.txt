@@ -49,7 +49,7 @@ ALTER USER postgres WITH ENCRYPTED PASSWORD 'j0s3_20221';
 psql -c "ALTER USER postgres WITH PASSWORD 'j0s3_20221';" 
 
 sudo nano /etc/phppgadmin/config.inc.php
-sudo nano /etc/apache2/conf-enabled/phppgadmin.conf 
+sudo mcedit /etc/apache2/conf-enabled/phppgadmin.conf 
 
 Require local
 Require ip 108.175.14.214/24
@@ -75,11 +75,14 @@ This is the (seriously underrated) built-in editor of Midnight Commander. Instal
 sudo apt install mc
 To edit a file with it, issue
 
-mcedit /etc/postgresql/12/main/postgresql.conf
- mcedit /etc/postgresql/12/main/pg_hba.conf
+sudo mcedit /etc/postgresql/12/main/postgresql.conf
+sudo mcedit /etc/postgresql/12/main/pg_hba.conf
+sudo mcedit /etc/default/jenkins
+
+sudo mcedit /etc/postgresql/12/main/postgresql.conf
 
 mcedit file-name
-
+//instalr postgresql
 https://help.clouding.io/hc/es/articles/4403784968594-Acceso-remoto-a-PostgreSQL
 https://help.clouding.io/hc/es/articles/360013590619
 ****************************************
@@ -92,3 +95,11 @@ https://linuxhint.com/install-jenkins-on-ubuntu/
 JENKIS 
 jsanchez
 0931147284Jlsb.
+
+CAMBIAR PUERTO JENKIS
+ sudo mcedit /etc/default/jenkins
+  sudo mcedit /usr/lib/systemd/system/jenkins.service
+sudo service jenkins restart
+
+https://help.clouding.io/hc/es/articles/4403784968594-Acceso-remoto-a-PostgreSQL
+ 

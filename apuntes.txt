@@ -16,3 +16,79 @@ docker image build -t godocapi .
 
 compilar imagen docker
 docker container run -p 7050:9001 godocapi
+
+//------se usa gin -----
+inciar proyecto api con GIN
+go mod init github.com/joseluissanchez77/GoTesisApiArduino
+
+go get github.com/gin-gonic/gin
+
+
+
+go get gorm.io/gorm
+go get gorm.io/driver/postgres
+
+
+https://www.youtube.com/watch?v=socM14c9Vfk
+
+****************************
+vps
+comando 
+
+ssh root@108.175.14.214
+sudo apt update
+apt upgrade
+
+//instalar postgress
+https://computingforgeeks.com/installing-postgresql-database-server-on-ubuntu/
+sudo su - postgres
+psql -c "alter user postgres with password 'j0s3_2022'"
+
+ALTER USER postgres WITH ENCRYPTED PASSWORD 'j0s3_20221';
+
+psql -c "ALTER USER postgres WITH PASSWORD 'j0s3_20221';" 
+
+sudo nano /etc/phppgadmin/config.inc.php
+sudo nano /etc/apache2/conf-enabled/phppgadmin.conf 
+
+Require local
+Require ip 108.175.14.214/24
+Require ip 45.236.170.61/24
+
+**********************************************************
+##### 1. Desinstale todos los paquetes actuales relacionados con Postgresql:
+
+apt-get remove postgresql*
+1
+The following packages will be REMOVED:
+postgresql* postgresql-9.1* postgresql-client-9.1* postgresql-client-common* postgresql-common*
+
+2. La siguiente es la clave para eliminar el archivo de configuración y el Usuario:
+rm -r /etc/postgresql/
+rm -r /var/lib/postgresql/
+userdel -r postgres
+
+**************************
+Mcedit EDITOR DE ARCHIVOS
+This is the (seriously underrated) built-in editor of Midnight Commander. Install:
+
+sudo apt install mc
+To edit a file with it, issue
+
+mcedit /etc/postgresql/12/main/postgresql.conf
+ mcedit /etc/postgresql/12/main/pg_hba.conf
+
+mcedit file-name
+
+https://help.clouding.io/hc/es/articles/4403784968594-Acceso-remoto-a-PostgreSQL
+https://help.clouding.io/hc/es/articles/360013590619
+****************************************
+INSTALAR JENKIS
+
+https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-20-04-es
+
+https://linuxhint.com/install-jenkins-on-ubuntu/
+
+JENKIS 
+jsanchez
+0931147284Jlsb.

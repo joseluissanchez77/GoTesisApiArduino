@@ -1,16 +1,29 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"net/http"
+	"github.com/joseluissanchez77/GoTesisApiArduino/database"
+	"github.com/joseluissanchez77/GoTesisApiArduino/server"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello..., 世界")
-}
+func main(){
 
-func main() {
-	http.HandleFunc("/", handler)
-	log.Fatal(http.ListenAndServe(":9001", nil))
+	database.StartDB()
+	
+	server := server.NewServer()
+
+	server.Run()
 }
+// import (
+// 	"fmt"
+// 	"log"
+// 	"net/http"
+// )
+
+// func handler(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Fprintln(w, "Hello..., 世界")
+// }
+
+// func main() {
+// 	http.HandleFunc("/", handler)
+// 	log.Fatal(http.ListenAndServe(":9001", nil))
+// }

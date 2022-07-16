@@ -74,7 +74,7 @@ func ShowAllSensorData(c *gin.Context){
 
 	var sensordata []models.SensorData
 
-	err := db.Find(&sensordata).Error
+	err := db.Order("id desc").Find(&sensordata).Error
 
 	if err != nil{
 		c.JSON(400, gin.H{

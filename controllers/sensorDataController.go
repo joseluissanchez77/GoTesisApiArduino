@@ -147,3 +147,24 @@ func DeleteSensorData(c *gin.Context){
 
 	c.Status(204)
 }
+
+
+
+func LastRecordSensorData(c *gin.Context){
+
+	db:= database.GetDatabase()
+
+	var sensordata models.SensorData
+
+	err := db.Order("id desc").Limit( 1 ).Find(&sensordata).Error
+
+	if err != nil{
+		c.JSON(400, gin.H{
+			"error" : "Error al obtener lista de datos sensor: "+err.Error(),
+		})
+		return
+	}
+
+
+	c.JSON(200, sensordata)
+}

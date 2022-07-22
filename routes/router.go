@@ -15,8 +15,10 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 			sensorData.POST("/", controllers.CreateSensorData)
 			sensorData.PUT("/", controllers.UpdateSensorData)
 			sensorData.DELETE("/:id", controllers.DeleteSensorData)
+			sensorData.GET("/last-record", controllers.LastRecordSensorData)
 		}
 	}
 
 	return router;
 }
+

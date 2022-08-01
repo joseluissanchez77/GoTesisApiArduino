@@ -1,7 +1,7 @@
 package server
 
 import (
-	"log"
+	// "log"
 	"github.com/joseluissanchez77/GoTesisApiArduino/routes"
 	"github.com/gin-gonic/gin"
 )

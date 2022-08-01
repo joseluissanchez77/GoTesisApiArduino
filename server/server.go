@@ -13,7 +13,8 @@ type Server struct{
 
 func NewServer() Server{
 	return Server{
-		port: "9001",
+		// port: "9001",
+		port: null,
 		server: gin.Default(),
 	}
 }

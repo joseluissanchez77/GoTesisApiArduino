@@ -147,3 +147,6 @@ Year	06   2006
 Month	01   1   Jan   January
 Day	02   2   _2   (width two, right justified)
 Weekday	Mon   Monday
+
+
+https://abbreviations.yourdictionary.com/articles/standard-month-and-days-of-the-week-abbreviations.html

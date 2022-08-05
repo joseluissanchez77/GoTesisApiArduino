@@ -139,3 +139,11 @@ http://108.175.14.214:9001/api/v1
 }
 
 {{base_url}}/sensor-data/5
+
+
+https://yourbasic.org/golang/format-parse-string-time-date-example/
+
+Year	06   2006
+Month	01   1   Jan   January
+Day	02   2   _2   (width two, right justified)
+Weekday	Mon   Monday

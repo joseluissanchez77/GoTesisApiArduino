@@ -51,7 +51,7 @@ func CreateSensorData(c *gin.Context){
         fmt.Println(err)
     }
  
-	c.JSON(http.StatusOK, time.Now().UTC().In(loc).Format("01-02-2006 15:04:05"))
+	c.JSON(http.StatusOK, time.Now().UTC().In(loc).Format("Mon 01-02-2006 15:04:05"))
 	// // dt :=  time.Now().UTC()
 
 	// // local := dt

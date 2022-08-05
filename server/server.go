@@ -4,7 +4,7 @@ import (
 	"log"
 	"github.com/joseluissanchez77/GoTesisApiArduino/routes"
 	"github.com/gin-gonic/gin"
-	// "os"
+	"os"
 )
 
 type Server struct{

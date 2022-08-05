@@ -4,7 +4,7 @@ import (
 	"log"
 	"github.com/joseluissanchez77/GoTesisApiArduino/routes"
 	"github.com/gin-gonic/gin"
-	"os"
+	//"os"
 )
 
 type Server struct{
@@ -14,7 +14,8 @@ type Server struct{
 
 func NewServer() Server{
 	return Server{
-		port: os.Getenv("PORT"),
+		//port: os.Getenv("PORT"),
+		port: "9001",
 		server: gin.Default(),
 	}
 }

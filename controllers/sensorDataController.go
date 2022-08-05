@@ -1,6 +1,10 @@
 package controllers
 
 import (
+	"net/http"
+	// "fmt"
+	"time"
+	// "log"
 	"github.com/joseluissanchez77/GoTesisApiArduino/models"
 	"github.com/joseluissanchez77/GoTesisApiArduino/database"
 	"strconv"
@@ -40,31 +44,42 @@ func ShowSensorData(c *gin.Context){
 
 func CreateSensorData(c *gin.Context){
 
-	db := database.GetDatabase()
+	dt := time.Now()
+      
+    // Format MM-DD-YYYY
+    // fmt.Println(dt.Format("01-02-2006"))
+	c.JSON(http.StatusOK, dt.Format("01-02-2006 15:04:05"))
 
-	var sensordata models.SensorData
+	/* buf := make([]byte, 1024)
+	num, _ := c.Request.Body.Read(buf)
+	reqBody := string(buf[0:num])
+	c.JSON(http.StatusOK, reqBody) */
 
-	err := c.ShouldBindJSON(&sensordata)
+	// db := database.GetDatabase()
 
-	if err != nil{
-		c.JSON(400, gin.H{
-			"error" : "No se puede enlazar json: "+err.Error(),
-		})
-		return
-	}
+	// var sensordata models.SensorData
+	// // log.Println("---->>>", &sensordata)
+	// err := c.ShouldBindJSON(&sensordata)
+	
+	// if err != nil{
+	// 	c.JSON(400, gin.H{
+	// 		"error" : "No se puede enlazar json: "+err.Error(),
+	// 	})
+	// 	return
+	// }
 
-	//crear
-	err = db.Create(&sensordata).Error 
+	// //crear
+	// err = db.Create(&sensordata).Error 
 
-	if err != nil{
-		c.JSON(400, gin.H{
-			"error" : "Error al guardar datos del sensor: "+err.Error(),
-		})
-		return
-	}
+	// if err != nil{
+	// 	c.JSON(400, gin.H{
+	// 		"error" : "Error al guardar datos del sensor: "+err.Error(),
+	// 	})
+	// 	return
+	// }
 
 
-	c.JSON(200, sensordata)
+	// c.JSON(200, sensordata)
 }
 
 

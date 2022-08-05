@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"net/http"
-	// "fmt"
+	"fmt"
 	"time"
 	// "log"
 	"github.com/joseluissanchez77/GoTesisApiArduino/models"
@@ -44,16 +44,32 @@ func ShowSensorData(c *gin.Context){
 
 func CreateSensorData(c *gin.Context){
 
-	dt := time.Now()
-      
-    // Format MM-DD-YYYY
-    // fmt.Println(dt.Format("01-02-2006"))
-	c.JSON(http.StatusOK, dt.Format("01-02-2006 15:04:05"))
+	
+	loc, err := time.LoadLocation("America/Guayaquil")
+
+    if err != nil {
+        fmt.Println(err)
+    }
+ 
+	c.JSON(http.StatusOK, time.Now().UTC().In(loc).Format("01-02-2006 15:04:05"))
+	// // dt :=  time.Now().UTC()
+
+	// // local := dt
+    // // location, err := time.LoadLocation("Europe/Budapest")
+    // // if err == nil {
+    // //     local = local.In(location)
+    // // }
+
+
+    // // // Format MM-DD-YYYY
+    // // // fmt.Println(dt.Format("01-02-2006"))
+	// // c.JSON(http.StatusOK,  dt.Format("15:04"), local.Location(), local.Format("15:04"))
+	// // // dt.Format("01-02-2006 15:04:05"))
 
 	/* buf := make([]byte, 1024)
 	num, _ := c.Request.Body.Read(buf)
 	reqBody := string(buf[0:num])
-	c.JSON(http.StatusOK, reqBody) */
+	 */
 
 	// db := database.GetDatabase()
 

@@ -80,7 +80,7 @@ sudo mcedit /etc/postgresql/12/main/pg_hba.conf
 sudo mcedit /etc/default/jenkins
 
 sudo mcedit /etc/postgresql/12/main/postgresql.conf
-
+sudo mcedit /etc/phppgadmin/config.inc.php
 mcedit file-name
 //instalr postgresql
 https://help.clouding.io/hc/es/articles/4403784968594-Acceso-remoto-a-PostgreSQL
@@ -105,7 +105,7 @@ https://help.clouding.io/hc/es/articles/4403784968594-Acceso-remoto-a-PostgreSQL
  
 
 
-git clone https://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@github.com/joseluissanchez77/GoTesisApiArduino.git
+git clone https://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@github.com/joseluissanchez77/GoTesisApiArduino.git
 
 
 

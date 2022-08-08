@@ -125,31 +125,31 @@ func CreateSensorData(c *gin.Context){
 	reqBody := string(buf[0:num])
 	 */
 
-	// db := database.GetDatabase()
+	// // // // db := database.GetDatabase()
 
-	// var sensordata models.SensorData
-	// // log.Println("---->>>", &sensordata)
-	// err := c.ShouldBindJSON(&sensordata)
+	// // // // var sensordata models.SensorData
+	// // // // // log.Println("---->>>", &sensordata)
+	// // // // err := c.ShouldBindJSON(&sensordata)
 	
-	// if err != nil{
-	// 	c.JSON(400, gin.H{
-	// 		"error" : "No se puede enlazar json: "+err.Error(),
-	// 	})
-	// 	return
-	// }
+	// // // // if err != nil{
+	// // // // 	c.JSON(400, gin.H{
+	// // // // 		"error" : "No se puede enlazar json: "+err.Error(),
+	// // // // 	})
+	// // // // 	return
+	// // // // }
 
-	// //crear
-	// err = db.Create(&sensordata).Error 
+	// // // // //crear
+	// // // // err = db.Create(&sensordata).Error 
 
-	// if err != nil{
-	// 	c.JSON(400, gin.H{
-	// 		"error" : "Error al guardar datos del sensor: "+err.Error(),
-	// 	})
-	// 	return
-	// }
+	// // // // if err != nil{
+	// // // // 	c.JSON(400, gin.H{
+	// // // // 		"error" : "Error al guardar datos del sensor: "+err.Error(),
+	// // // // 	})
+	// // // // 	return
+	// // // // }
 
 
-	// c.JSON(200, sensordata)
+	// // // // c.JSON(200, sensordata)
 }
 
 

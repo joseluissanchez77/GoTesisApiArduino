@@ -1,9 +1,10 @@
 package controllers
 
 import (
-	// "net/http"
-	// "fmt"
-	// "time"
+	// "bytes"
+	"net/http"
+	"fmt"
+	"time"
 	// "log"
 	"github.com/joseluissanchez77/GoTesisApiArduino/models"
 	"github.com/joseluissanchez77/GoTesisApiArduino/database"
@@ -45,6 +46,61 @@ func ShowSensorData(c *gin.Context){
 func CreateSensorData(c *gin.Context){
 
 	db := database.GetDatabase()
+
+	loc, erro := time.LoadLocation("America/Guayaquil")
+
+    if erro != nil {
+        fmt.Println(erro)
+    }
+
+
+	day  := time.Now().UTC().In(loc).Format("Mon")
+	date := time.Now().UTC().In(loc).Format("01-02-2006")
+	currentHour := time.Now().UTC().In(loc).Format("15:04:05")
+	fmt.Println(day, date, currentHour)
+
+	var parameterData models.ParameterData
+
+	// erroP = db./* Select([]string{"hour_initial", "hour_end"}). */First(&parameterData, newid).Error 
+	erros := db.Where("Weekday LIKE ?", "%Mon%").Find(&parameterData).Error 
+	
+	if erros != nil{
+		c.JSON(400, gin.H{
+			"error" : "No se encontro parametros: "+erros.Error(),
+		})
+		return
+	}
+
+	//aceder al request
+	sensorData:=  models.SensorData{}
+	c.Bind(&sensorData)
+
+	c.JSON(http.StatusOK, gin.H{"response": sensorData.Description, "para": parameterData.HourInitial})
+
+	// description := c.PostForm("description")
+
+	// c.JSON(http.StatusOK, gin.H{"response": c.PostForm("description")})
+	// c.JSON(200, description)
+	
+	/* db := database.GetDatabase()
+
+	rqt := models.SensorData{
+		Description : 		"test365",
+		Celsius  	: 		1,
+		Fahrenheit 	: 		2,
+		WaterLevel 	: 		3,
+		Ph			: 		4,
+		Nutrition	: 		1,
+	}
+
+	err := db.Create(&rqt)
+	
+	if err != nil{
+		log.Println(err)
+	}
+
+	c.JSON(200, rqt.ID) */
+
 	// // loc, erro := time.LoadLocation("America/Guayaquil")
 
     // // if erro != nil {
@@ -71,29 +127,29 @@ func CreateSensorData(c *gin.Context){
 
 	// db := database.GetDatabase()
 
-	var sensordata models.SensorData
-	// log.Println("---->>>", &sensordata)
-	err := c.ShouldBindJSON(&sensordata)
+	// var sensordata models.SensorData
+	// // log.Println("---->>>", &sensordata)
+	// err := c.ShouldBindJSON(&sensordata)
 	
-	if err != nil{
-		c.JSON(400, gin.H{
-			"error" : "No se puede enlazar json: "+err.Error(),
-		})
-		return
-	}
+	// if err != nil{
+	// 	c.JSON(400, gin.H{
+	// 		"error" : "No se puede enlazar json: "+err.Error(),
+	// 	})
+	// 	return
+	// }
 
-	//crear
-	err = db.Create(&sensordata).Error 
+	// //crear
+	// err = db.Create(&sensordata).Error 
 
-	if err != nil{
-		c.JSON(400, gin.H{
-			"error" : "Error al guardar datos del sensor: "+err.Error(),
-		})
-		return
-	}
+	// if err != nil{
+	// 	c.JSON(400, gin.H{
+	// 		"error" : "Error al guardar datos del sensor: "+err.Error(),
+	// 	})
+	// 	return
+	// }
 
 
-	c.JSON(200, sensordata)
+	// c.JSON(200, sensordata)
 }
 
 

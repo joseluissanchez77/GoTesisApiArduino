@@ -43,6 +43,14 @@ func ShowSensorData(c *gin.Context){
 }
 
 
+// func Ternary[T any](condition bool, If, Else T) T {
+//     if condition {
+//         return If
+//     }
+//     return Else
+// }
+// fmt.Println(Ternary(1 < 2, "yes", "no")) // yes
+
 func CreateSensorData(c *gin.Context){
 
 	db := database.GetDatabase()
@@ -62,7 +70,7 @@ func CreateSensorData(c *gin.Context){
 	var parameterData models.ParameterData
 
 	// erroP = db./* Select([]string{"hour_initial", "hour_end"}). */First(&parameterData, newid).Error 
-	erros := db.Where("Weekday LIKE ?", "%Mon%").Find(&parameterData).Error 
+	erros := db.Where("Weekday LIKE ?", "%Tue%").Find(&parameterData).Error 
 	
 	if erros != nil{
 		c.JSON(400, gin.H{
@@ -75,7 +83,52 @@ func CreateSensorData(c *gin.Context){
 	sensorData:=  models.SensorData{}
 	c.Bind(&sensorData)
 
-	c.JSON(http.StatusOK, gin.H{"response": sensorData.Description, "para": parameterData.HourInitial})
+	// c.JSON(http.StatusOK, gin.H{"response": sensorData.Description, "para": parameterData.HourInitial})
+
+
+	// var sensordata models.SensorData
+	// // log.Println("---->>>", &sensordata)
+	// err := c.ShouldBindJSON(&sensordata)
+
+	var nut int64
+	if currentHour >= parameterData.HourInitial && parameterData.HourEnd <= currentHour  {
+		nut = 1//apagado
+	} else {
+		nut = 2//encendido
+	}
+
+
+	sensordataModf := models.SensorData{
+		Description : 		sensorData.Description,
+		Celsius  	: 		sensorData.Celsius,
+		Fahrenheit 	: 		sensorData.Fahrenheit,
+		WaterLevel 	: 		sensorData.WaterLevel,
+		Ph			: 		sensorData.Ph,
+		Nutrition	: 		nut ,
+	}
+
+	// err := c.ShouldBindJSON(&sensordataModf)
+	
+	// if err != nil{
+	// 	c.JSON(400, gin.H{
+	// 		"error" : "No se puede enlazar json: "+err.Error(),
+	// 	})
+	// 	return
+	// }
+
+	//crear
+	err := db.Create(&sensordataModf).Error 
+
+	if err != nil{
+		c.JSON(400, gin.H{
+			"error" : "Error al guardar datos del sensor: "+err.Error(),
+		})
+		return
+	}
+
+
+	c.JSON(http.StatusOK, sensordataModf)
+
 
 	// description := c.PostForm("description")
 

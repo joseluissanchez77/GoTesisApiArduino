@@ -69,8 +69,9 @@ func CreateSensorData(c *gin.Context){
 
 	var parameterData models.ParameterData
 
-	// erroP = db./* Select([]string{"hour_initial", "hour_end"}). */First(&parameterData, newid).Error 
-	erros := db.Where("Weekday LIKE ?", "%Tue%").Find(&parameterData).Error 
+	// erroP = db./* Select([]string{"hour_initial", "hour_end"}). */First(&parameterData, newid).Error  Tue
+	// erros := db.Where("Weekday LIKE ?", "%Sat%").Find(&parameterData).Error 
+	erros := db.Where("Weekday = ? and keywork = ?",day , "ALI").Find(&parameterData).Error 
 	
 	if erros != nil{
 		c.JSON(400, gin.H{
@@ -91,12 +92,27 @@ func CreateSensorData(c *gin.Context){
 	// err := c.ShouldBindJSON(&sensordata)
 
 	var nut int64
-	if currentHour >= parameterData.HourInitial && parameterData.HourEnd <= currentHour  {
+	if !(parameterData.HourInitial >= currentHour)  && !(currentHour <= parameterData.HourEnd)  {
 		nut = 1//apagado
 	} else {
 		nut = 2//encendido
 	}
 
+	var waterPump string
+	var parameterDataBomb models.ParameterData
+	errosBom := db.Where("keywork = ?", "BOM").Find(&parameterDataBomb).Error 
+	if errosBom != nil{
+		c.JSON(400, gin.H{
+			"error" : "No se encontro parametros: "+errosBom.Error(),
+		})
+		return
+	}
+	
+	if (parameterDataBomb.InitialRangeOff >= sensorData.WaterLevel) && (sensorData.WaterLevel <= parameterDataBomb.EndRangeOff)  {
+		waterPump = "apagado"//apagado
+	} else {
+		waterPump = "encendido"//encendido
+	}
 
 	sensordataModf := models.SensorData{
 		Description : 		sensorData.Description,
@@ -105,6 +121,7 @@ func CreateSensorData(c *gin.Context){
 		WaterLevel 	: 		sensorData.WaterLevel,
 		Ph			: 		sensorData.Ph,
 		Nutrition	: 		nut ,
+		WaterPump	:		waterPump,
 	}
 
 	// err := c.ShouldBindJSON(&sensordataModf)

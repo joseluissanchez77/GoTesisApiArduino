@@ -2,6 +2,8 @@ module github.com/joseluissanchez77/GoTesisApiArduino
 
 go 1.18
 
+require gorm.io/gorm v1.23.8
+
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.8.1 // indirect
@@ -34,5 +36,4 @@ require (
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gorm.io/driver/postgres v1.3.8 // indirect
-	gorm.io/gorm v1.23.8 // indirect
 )

@@ -123,7 +123,7 @@ func CreateSensorData(c *gin.Context){
 		Ph			: 		sensorData.Ph,
 		Nutrition	: 		nut ,
 		WaterPump	:		waterPump,
-		TimeAndDateLocal :  time.Now().UTC().In(loc),
+		TimeAndDateLocal :  time.Now().UTC().In(loc).Format("01-02-2006 15:04:05"),
 	}
 
 	// err := c.ShouldBindJSON(&sensordataModf)

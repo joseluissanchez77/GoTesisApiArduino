@@ -91,11 +91,11 @@ func CreateSensorData(c *gin.Context){
 	// // log.Println("---->>>", &sensordata)
 	// err := c.ShouldBindJSON(&sensordata)
 
-	var nut int64
+	var nut string
 	if !(parameterData.HourInitial >= currentHour)  && !(currentHour <= parameterData.HourEnd)  {
-		nut = 1//apagado
+		nut = "alimentando"
 	} else {
-		nut = 2//encendido
+		nut = "encendido"
 	}
 
 	var waterPump string

@@ -12,7 +12,7 @@ type SensorData struct{
 	Fahrenheit float32 			`json:"fahrenheit" gorm:"type:decimal(10,2)"`
 	WaterLevel float32 			`json:"water_level" gorm:"type:decimal(10,2)"`
 	Ph float32 					`json:"ph" gorm:"type:decimal(10,2)"`
-	Nutrition int64 			`gorm:"type:integer;default:1" json:"nutrition"`
+	Nutrition string 			`gorm:"type:string;default:apagado" json:"nutrition"`
 	WaterPump string 			`json:"water_pump" gorm:"type:string;default:apagado"`
 	CreatedAt time.Time 		`json:"created"`
 	UpdatedAt time.Time 		`json:"updated"`

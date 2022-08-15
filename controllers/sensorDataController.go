@@ -93,9 +93,9 @@ func CreateSensorData(c *gin.Context){
 
 	var nut string
 	if !(parameterData.HourInitial >= currentHour)  && !(currentHour <= parameterData.HourEnd)  {
-		nut = "alimentando"
+		nut = "apagado"
 	} else {
-		nut = "encendido"
+		nut = "alimentando"
 	}
 
 	var waterPump string

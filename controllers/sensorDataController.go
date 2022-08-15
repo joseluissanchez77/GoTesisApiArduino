@@ -114,6 +114,7 @@ func CreateSensorData(c *gin.Context){
 		waterPump = "encendido"//encendido
 	}
 
+	
 	sensordataModf := models.SensorData{
 		Description : 		sensorData.Description,
 		Celsius  	: 		sensorData.Celsius,
@@ -122,6 +123,7 @@ func CreateSensorData(c *gin.Context){
 		Ph			: 		sensorData.Ph,
 		Nutrition	: 		nut ,
 		WaterPump	:		waterPump,
+		TimeAndDateLocal :  time.Now().UTC().In(loc),
 	}
 
 	// err := c.ShouldBindJSON(&sensordataModf)

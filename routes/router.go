@@ -17,6 +17,26 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 			sensorData.PUT("/", controllers.UpdateSensorData)
 			sensorData.DELETE("/:id", controllers.DeleteSensorData)
 		}
+
+		parameterData := main.Group("parameter-data")
+		{
+			// parameterData.GET("/:id", controllers.ShowParameterData)
+			// parameterData.GET("/last-record", controllers.LastRecordparameterData)
+			// parameterData.GET("/", controllers.ShowAllparameterData)
+			parameterData.POST("/food", controllers.CreateFoodParameterData)
+			// parameterData.PUT("/", controllers.UpdateparameterData)
+			// parameterData.DELETE("/:id", controllers.DeleteparameterData)
+		}
+
+		catalogData := main.Group("catalog-data")
+		{
+			// catalogData.GET("/:id", controllers.ShowCatalogData)
+			// catalogData.GET("/last-record", controllers.LastRecordCatalogData)
+			catalogData.GET("/", controllers.ShowAllCatalogData)
+			// catalogData.POST("/", controllers.CreateCatalogData)
+			// catalogData.PUT("/", controllers.UpdateCatalogData)
+			// catalogData.DELETE("/:id", controllers.DeleteCatalogData)
+		}
 	}
 
 	return router;

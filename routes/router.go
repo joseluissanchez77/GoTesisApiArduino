@@ -24,6 +24,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 			// parameterData.GET("/last-record", controllers.LastRecordparameterData)
 			// parameterData.GET("/", controllers.ShowAllparameterData)
 			parameterData.POST("/food", controllers.CreateFoodParameterData)
+			parameterData.POST("/water-pumps", controllers.CreateWaterPumpsParameterData)
 			// parameterData.PUT("/", controllers.UpdateparameterData)
 			// parameterData.DELETE("/:id", controllers.DeleteparameterData)
 		}

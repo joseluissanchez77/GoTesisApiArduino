@@ -124,6 +124,8 @@ func CreateSensorData(c *gin.Context){
 		Nutrition	: 		nut ,
 		WaterPump	:		waterPump,
 		TimeAndDateLocal :  time.Now().UTC().In(loc).Format("01-02-2006 15:04:05"),
+		DescripcionTurbidez : sensorData.DescripcionTurbidez,
+		Turbidez	: 		sensorData.Turbidez,
 	}
 
 	// err := c.ShouldBindJSON(&sensordataModf)

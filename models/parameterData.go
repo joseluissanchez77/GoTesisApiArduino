@@ -17,6 +17,8 @@ type ParameterData struct{
 	Weekday string 				`json:"weekday"`
 	HourInitial string 			`json:"hour_initial"`
 	HourEnd string 				`json:"hour_end"`
+	DescripcionTurbidez string 				`json:"descripcion_turbidez"`
+	Turbidez		float32			`json:"turbidez" gorm:"type:decimal(10,2);default:0"`
 	CreatedAt time.Time 		`json:"created"`
 	UpdatedAt time.Time 		`json:"updated"`
 	DeletedAt gorm.DeletedAt	`gorm:"index" json:"deleted"`

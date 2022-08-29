@@ -13,7 +13,9 @@ type SensorData struct{
 	WaterLevel float32 			`json:"water_level" gorm:"type:decimal(10,2)"`
 	Ph float32 					`json:"ph" gorm:"type:decimal(10,2)"`
 	Nutrition string 			`gorm:"type:string;default:apagado" json:"nutrition"`
-	WaterPump string 			`json:"water_pump" gorm:"type:string;default:apagado"`
+	WaterPump string 			`json:"water_pump" gorm:"type:string;default:apagado"`,
+	DescripcionTurbidez string 				`json:"descripcion_turbidez"`
+	Turbidez		float32			`json:"turbidez" gorm:"type:decimal(10,2);default:0"`
 	TimeAndDateLocal	string	`json:"time_and_date_local"`
 	CreatedAt time.Time 		`json:"created"`
 	UpdatedAt time.Time 		`json:"updated"`

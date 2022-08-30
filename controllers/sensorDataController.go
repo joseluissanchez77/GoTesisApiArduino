@@ -2,7 +2,7 @@ package controllers
 
 import (
 	// "bytes"
-	// "net/http"
+	"net/http"
 	"fmt"
 	"time"
 	// "log"
@@ -138,14 +138,14 @@ func CreateSensorData(c *gin.Context){
 	// }
 
 	//crear
-	err := db.Create(&sensordataModf).Error 
+	// err := db.Create(&sensordataModf).Error 
 
-	if err != nil{
-		c.JSON(400, gin.H{
-			"error" : "Error al guardar datos del sensor: "+err.Error(),
-		})
-		return
-	}
+	// if err != nil{
+	// 	c.JSON(400, gin.H{
+	// 		"error" : "Error al guardar datos del sensor: "+err.Error(),
+	// 	})
+	// 	return
+	// }
 
 
 	c.JSON(http.StatusOK, sensordataModf)

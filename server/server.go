@@ -5,7 +5,7 @@ import (
 	// "time"
 	"github.com/joseluissanchez77/GoTesisApiArduino/routes"
 	"github.com/gin-gonic/gin"
-	"github.com/gin-contrib/cors"
+	// "github.com/gin-contrib/cors"
 	"os"
 )
 
@@ -27,13 +27,13 @@ func (s *Server)Run(){
 	router := routes.ConfigRoutes(s.server)
 
 
-	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"*"}
-	// config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}
-	// config.AllowAllOrigins = true
+	// config := cors.DefaultConfig()
+	// config.AllowOrigins = []string{"*"}
+	// // config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}
+	// // config.AllowAllOrigins = true
   
-	router.Use(cors.New(config))
-	router.Run()
+	// router.Use(cors.New(config))
+	// router.Run()
 
 
 	// router.Use(cors.Default())

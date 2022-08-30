@@ -2,6 +2,7 @@ package routes
 import (
 	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
 )
 
 func ConfigRoutes(router *gin.Engine) *gin.Engine{
@@ -41,7 +42,8 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 			// catalogData.DELETE("/:id", controllers.DeleteCatalogData)
 		}
 	}
-
+	router.Use(cors.Default())
+	router.Run()
 	return router;
 }
 

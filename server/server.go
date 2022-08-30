@@ -26,18 +26,20 @@ func (s *Server)Run(){
 
 	router := routes.ConfigRoutes(s.server)
 
-	// router := gin.Default()
-	corsConfig := cors.DefaultConfig()
+	router.Use(cors.Default())
+	
+	// // router := gin.Default()
+	// corsConfig := cors.DefaultConfig()
 
-	corsConfig.AllowOrigins = []string{"*"}
-	// To be able to send tokens to the server.
-	corsConfig.AllowCredentials = true
+	// corsConfig.AllowOrigins = []string{"*"}
+	// // To be able to send tokens to the server.
+	// corsConfig.AllowCredentials = true
 
-	// OPTIONS method for ReactJS
-	corsConfig.AddAllowMethods("POST, OPTIONS, GET, PUT, DELETE")
+	// // OPTIONS method for ReactJS
+	// corsConfig.AddAllowMethods("POST, OPTIONS, GET, PUT, DELETE")
 
-	// Register the middleware
-	router.Use(cors.New(corsConfig))
+	// // Register the middleware
+	// router.Use(cors.New(corsConfig))
 
 
 // 	router = gin.Default()

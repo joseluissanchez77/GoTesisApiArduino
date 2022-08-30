@@ -2,11 +2,11 @@ package server
 
 import (
 	"log"
-	"time"
+	// "time"
 	"github.com/joseluissanchez77/GoTesisApiArduino/routes"
 	"github.com/gin-gonic/gin"
 	"os"
-	"github.com/itsjamie/gin-cors"
+	// "github.com/itsjamie/gin-cors"
 )
 
 type Server struct{
@@ -27,7 +27,7 @@ func (s *Server)Run(){
 	router := routes.ConfigRoutes(s.server)
 
 
-	router.Run()
+
 	// config := cors.DefaultConfig()
 	// config.AllowOrigins = []string{"*"}
 	// // config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}

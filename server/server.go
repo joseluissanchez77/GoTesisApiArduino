@@ -2,7 +2,7 @@ package server
 
 import (
 	"log"
-	"time"
+	// "time"
 	"github.com/joseluissanchez77/GoTesisApiArduino/routes"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/cors"
@@ -23,7 +23,22 @@ func NewServer() Server{
 }
 
 func (s *Server)Run(){
+
 	router := routes.ConfigRoutes(s.server)
+
+	// router := gin.Default()
+	corsConfig := cors.DefaultConfig()
+
+	corsConfig.AllowOrigins = []string{"*"}
+	// To be able to send tokens to the server.
+	corsConfig.AllowCredentials = true
+
+	// OPTIONS method for ReactJS
+	corsConfig.AddAllowMethods("OPTIONS")
+
+	// Register the middleware
+	router.Use(cors.New(corsConfig))
+
 
 // 	router = gin.Default()
 //  // CORS for https://foo.com and https://github.com origins, allowing:

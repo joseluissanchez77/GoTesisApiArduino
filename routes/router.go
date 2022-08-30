@@ -3,9 +3,25 @@ import (
 	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/gin-gonic/gin"
 	// "github.com/gin-contrib/cors"
+	"github.com/itsjamie/gin-cors"
+	"time"
 )
 
 func ConfigRoutes(router *gin.Engine) *gin.Engine{
+
+	// Initialize a new Gin router
+router = gin.New()
+
+// Apply the middleware to the router (works with groups too)
+router.Use(cors.Middleware(cors.Config{
+	Origins:        "*",
+	Methods:        "GET, PUT, POST, DELETE",
+	RequestHeaders: "Origin, Authorization, Content-Type",
+	ExposedHeaders: "",
+	MaxAge: 50 * time.Second,
+	Credentials: false,
+	ValidateHeaders: false,
+}))
 
 	main := router.Group("api/v1")
 	{

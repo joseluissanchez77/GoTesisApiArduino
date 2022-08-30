@@ -5,7 +5,6 @@ import (
 	// "time"
 	"github.com/joseluissanchez77/GoTesisApiArduino/routes"
 	"github.com/gin-gonic/gin"
-	// "github.com/gin-contrib/cors"
 	"os"
 )
 

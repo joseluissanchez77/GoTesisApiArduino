@@ -43,8 +43,6 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 		}
 	}
 
-	router := gin.Default()
-
 	return router;
 }
 

@@ -13,6 +13,10 @@ import (
 )
 
 func ShowSensorData(c *gin.Context){
+
+	c.Header("Access-Control-Allow-Origin", "*")
+    c.Header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS")
+
 	//recibe el id del request - por default llega en string
 	id := c.Param("id")
 

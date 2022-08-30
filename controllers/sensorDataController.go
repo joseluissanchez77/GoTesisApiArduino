@@ -138,19 +138,92 @@ func CreateSensorData(c *gin.Context){
 	// }
 
 	//crear
-	// err := db.Create(&sensordataModf).Error 
+	err := db.Create(&sensordataModf).Error 
 
-	// if err != nil{
-	// 	c.JSON(400, gin.H{
-	// 		"error" : "Error al guardar datos del sensor: "+err.Error(),
-	// 	})
-	// 	return
-	// }
+	if err != nil{
+		c.JSON(400, gin.H{
+			"error" : "Error al guardar datos del sensor: "+err.Error(),
+		})
+		return
+	}
 
 
 	c.JSON(http.StatusOK, sensordataModf)
 
 
+	// description := c.PostForm("description")
+
+	// c.JSON(http.StatusOK, gin.H{"response": c.PostForm("description")})
+	// c.JSON(200, description)
+	
+	/* db := database.GetDatabase()
+
+	rqt := models.SensorData{
+		Description : 		"test365",
+		Celsius  	: 		1,
+		Fahrenheit 	: 		2,
+		WaterLevel 	: 		3,
+		Ph			: 		4,
+		Nutrition	: 		1,
+	}
+
+	err := db.Create(&rqt)
+	
+	if err != nil{
+		log.Println(err)
+	}
+
+	c.JSON(200, rqt.ID) */
+
+	// // loc, erro := time.LoadLocation("America/Guayaquil")
+
+    // // if erro != nil {
+    // //     fmt.Println(erro)
+    // // }
+
+	// // var parameterData models.ParameterData
+	// // newid := 1
+	// // // db := database.GetDatabase()
+	// // erro = db./* Select([]string{"hour_initial", "hour_end"}). */First(&parameterData, newid).Error 
+
+	// // if erro != nil{
+	// // 	c.JSON(400, gin.H{
+	// // 		"error" : "No se encontro datos del sensor: "+erro.Error(),
+	// // 	})
+	// // 	return
+	// // }
+	// // c.JSON(http.StatusOK, time.Now().UTC().In(loc).Format("Mon 01-02-2006 15:04:05"))
+
+	/* buf := make([]byte, 1024)
+	num, _ := c.Request.Body.Read(buf)
+	reqBody := string(buf[0:num])
+	 */
+
+	// // // // db := database.GetDatabase()
+
+	// // // // var sensordata models.SensorData
+	// // // // // log.Println("---->>>", &sensordata)
+	// // // // err := c.ShouldBindJSON(&sensordata)
+	
+	// // // // if err != nil{
+	// // // // 	c.JSON(400, gin.H{
+	// // // // 		"error" : "No se puede enlazar json: "+err.Error(),
+	// // // // 	})
+	// // // // 	return
+	// // // // }
+
+	// // // // //crear
+	// // // // err = db.Create(&sensordata).Error 
+
+	// // // // if err != nil{
+	// // // // 	c.JSON(400, gin.H{
+	// // // // 		"error" : "Error al guardar datos del sensor: "+err.Error(),
+	// // // // 	})
+	// // // // 	return
+	// // // // }
+
+
+	// // // // c.JSON(200, sensordata)
 }
 
 

@@ -26,8 +26,18 @@ func (s *Server)Run(){
 
 	router := routes.ConfigRoutes(s.server)
 
-	router.Use(cors.Default())
-	
+
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"*"}
+	// config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}
+	// config.AllowAllOrigins = true
+  
+	router.Use(cors.New(config))
+	router.Run()
+
+
+	// router.Use(cors.Default())
+
 	// // router := gin.Default()
 	// corsConfig := cors.DefaultConfig()
 

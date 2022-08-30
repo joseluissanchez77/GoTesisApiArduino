@@ -25,19 +25,9 @@ func NewServer() Server{
 func (s *Server)Run(){
 
 	router := routes.ConfigRoutes(s.server)
-	router = gin.New()
-// Apply the middleware to the router (works with groups too)
-router.Use(cors.Middleware(cors.Config{
-	Origins:        "*",
-	Methods:        "GET, PUT, POST, DELETE",
-	RequestHeaders: "Origin, Authorization, Content-Type",
-	ExposedHeaders: "",
-	MaxAge: 50 * time.Second,
-	Credentials: false,
-	ValidateHeaders: false,
-}))
 
-router.Run()
+
+	router.Run()
 	// config := cors.DefaultConfig()
 	// config.AllowOrigins = []string{"*"}
 	// // config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}

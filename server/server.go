@@ -34,7 +34,7 @@ func (s *Server)Run(){
 	corsConfig.AllowCredentials = true
 
 	// OPTIONS method for ReactJS
-	corsConfig.AddAllowMethods("OPTIONS")
+	corsConfig.AddAllowMethods("POST, OPTIONS, GET, PUT, DELETE")
 
 	// Register the middleware
 	router.Use(cors.New(corsConfig))

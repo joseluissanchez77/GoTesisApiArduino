@@ -2,7 +2,7 @@ package controllers
 
 import (
 	// "bytes"
-	"net/http"
+	// "net/http"
 	"fmt"
 	"time"
 	// "log"
@@ -148,7 +148,7 @@ func CreateSensorData(c *gin.Context){
 	}
 
 
-	c.JSON(http.StatusOK, sensordataModf)
+	// c.JSON(http.StatusOK, sensordataModf)
 
 
 	// description := c.PostForm("description")
@@ -223,7 +223,7 @@ func CreateSensorData(c *gin.Context){
 	// // // // }
 
 
-	// // // // c.JSON(200, sensordata)
+	c.JSON(200, sensordataModf)
 }
 
 

@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"os"
 	// "github.com/itsjamie/gin-cors"
-	"github.com/gin-contrib/cors"
+	// "github.com/gin-contrib/cors"
 	
 )
 

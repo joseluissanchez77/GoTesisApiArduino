@@ -5,6 +5,7 @@ import (
 	// "github.com/gin-contrib/cors"
 	// "github.com/itsjamie/gin-cors"
 	// "time"
+	// "github.com/rs/cors"
 )
 
 func ConfigRoutes(router *gin.Engine) *gin.Engine{

@@ -26,53 +26,28 @@ func (s *Server)Run(){
 
 	router := routes.ConfigRoutes(s.server)
 
-
-
-	// config := cors.DefaultConfig()
-	// config.AllowOrigins = []string{"*"}
-	// // config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}
-	// // config.AllowAllOrigins = true
-  
-	// router.Use(cors.New(config))
-	// router.Run()
-
-
-	// router.Use(cors.Default())
-
-	// // router := gin.Default()
-	// corsConfig := cors.DefaultConfig()
-
-	// corsConfig.AllowOrigins = []string{"*"}
-	// // To be able to send tokens to the server.
-	// corsConfig.AllowCredentials = true
-
-	// // OPTIONS method for ReactJS
-	// corsConfig.AddAllowMethods("POST, OPTIONS, GET, PUT, DELETE")
-
-	// // Register the middleware
-	// router.Use(cors.New(corsConfig))
-
-
-// 	router = gin.Default()
-//  // CORS for https://foo.com and https://github.com origins, allowing:
-//  // - PUT and PATCH methods
-//  // - Origin header
-//  // - Credentials share
-//  // - Preflight requests cached for 12 hours
-//  router.Use(cors.New(cors.Config{
-// //   AllowOrigins:     []string{"https://foo.com"},
-//   AllowOrigins:     []string{"*"},
-//   AllowMethods:     []string{ "POST, OPTIONS, GET, PUT, DELETE"},
-//   AllowHeaders:     []string{"Origin"},
-//   ExposeHeaders:    []string{"Content-Length"},
-//   AllowCredentials: true,
-//   AllowOriginFunc: func(origin string) bool {
-//    return origin == "*"
-//   },
-//   MaxAge: 12 * time.Hour,
-//  }))
-//  router.Run()
-
+	router = gin.New()  
+	router.Use(CORSMiddleware())
+	
 	log.Print("server is running at port: ", s.port)
 	log.Fatal(router.Run(":"+s.port))
+}
+
+
+
+func CORSMiddleware() gin.HandlerFunc {
+    return func(c *gin.Context) {
+
+        c.Header("Access-Control-Allow-Origin", "*")
+        c.Header("Access-Control-Allow-Credentials", "true")
+        c.Header("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+        c.Header("Access-Control-Allow-Methods", "POST,HEAD,PATCH, OPTIONS, GET, PUT")
+
+        if c.Request.Method == "OPTIONS" {
+            c.AbortWithStatus(204)
+            return
+        }
+
+        c.Next()
+    }
 }

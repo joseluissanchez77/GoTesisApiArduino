@@ -29,17 +29,17 @@ func (s *Server)Run(){
 	router := routes.ConfigRoutes(s.server)
 
 	router = gin.New()  
-	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"*"},
-		AllowMethods:     []string{"PUT", "PATCH","GET"},
-		AllowHeaders:     []string{"Origin"},
-		ExposeHeaders:    []string{"Content-Length"},
-		AllowCredentials: true,
-		AllowOriginFunc: func(origin string) bool {
-		 return origin == "*"
-		},
-		MaxAge: 12 * time.Hour,
-	   }))
+	// router.Use(cors.New(cors.Config{
+	// 	AllowOrigins:     []string{"*"},
+	// 	AllowMethods:     []string{"PUT", "PATCH","GET"},
+	// 	AllowHeaders:     []string{"Origin"},
+	// 	ExposeHeaders:    []string{"Content-Length"},
+	// 	AllowCredentials: true,
+	// 	AllowOriginFunc: func(origin string) bool {
+	// 	 return origin == "*"
+	// 	},
+	// 	MaxAge: 12 * time.Hour,
+	//    }))
 	// router.Use(CORSMiddleware())
 
 	log.Print("server is running at port: ", s.port)

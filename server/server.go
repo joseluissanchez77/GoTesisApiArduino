@@ -40,7 +40,7 @@ func (s *Server)Run(){
 		},
 		MaxAge: 12 * time.Hour,
 	   }))
-	router.Use(CORSMiddleware())
+	// router.Use(CORSMiddleware())
 
 	log.Print("server is running at port: ", s.port)
 	log.Fatal(router.Run(":"+s.port))

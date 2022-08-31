@@ -7,6 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"os"
 	// "github.com/itsjamie/gin-cors"
+	"github.com/gin-contrib/cors"
+	
 )
 
 type Server struct{
@@ -27,8 +29,8 @@ func (s *Server)Run(){
 	router := routes.ConfigRoutes(s.server)
 
 	router = gin.New()  
-	router.Use(CORSMiddleware())
-	
+	router.Use(cors.Default())
+
 	log.Print("server is running at port: ", s.port)
 	log.Fatal(router.Run(":"+s.port))
 }

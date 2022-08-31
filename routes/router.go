@@ -48,6 +48,8 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 		}
 	}
 
+	main.Use(gin.Logger(), gin.Recovery())
+
 	main.Use(cors.New(cors.Config{
 		AllowAllOrigins: true,
 	}))

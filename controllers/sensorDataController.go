@@ -312,6 +312,9 @@ func DeleteSensorData(c *gin.Context){
 
 func LastRecordSensorData(c *gin.Context){
 
+	c.Header("Access-Control-Allow-Origin", "*")
+    c.Header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS")
+	
 	db:= database.GetDatabase()
 
 	var sensordata models.SensorData

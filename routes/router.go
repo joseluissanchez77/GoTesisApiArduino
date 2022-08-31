@@ -1,5 +1,6 @@
 package routes
 import (
+	"net/http"
 	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/gin-gonic/gin"
 	// "github.com/gin-contrib/cors"
@@ -40,7 +41,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 		{
 			// catalogData.GET("/:id", controllers.ShowCatalogData)
 			// catalogData.GET("/last-record", controllers.LastRecordCatalogData)
-			catalogData.GET("/", controllers.ShowAllCatalogData)
+			catalogData.GET("/", controllers.ShowAllCatalogData,preflight)
 			// catalogData.POST("/", controllers.CreateCatalogData)
 			// catalogData.PUT("/", controllers.UpdateCatalogData)
 			// catalogData.DELETE("/:id", controllers.DeleteCatalogData)
@@ -50,3 +51,8 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 	return router;
 }
 
+func preflight(c *gin.Context) {
+    c.Header("Access-Control-Allow-Origin", "*")
+    c.Header("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
+    c.JSON(http.StatusOK, struct{}{})
+}

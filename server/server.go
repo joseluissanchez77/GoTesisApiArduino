@@ -2,12 +2,12 @@ package server
 
 import (
 	"log"
-	// "time"
+	"time"
 	"github.com/joseluissanchez77/GoTesisApiArduino/routes"
 	"github.com/gin-gonic/gin"
 	"os"
 	// "github.com/itsjamie/gin-cors"
-	// "github.com/gin-contrib/cors"
+	"github.com/gin-contrib/cors"
 	
 )
 

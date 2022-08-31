@@ -28,15 +28,8 @@ func (s *Server)Run(){
 
 	router := routes.ConfigRoutes(s.server)
 
-	// router = gin.New()  
-	// router.Use(cors.Default())
-
-	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"*"}
-	// config.AllowOrigins = []string{"http://google.com", "http://facebook.com"}
-	// config.AllowAllOrigins = true
-
-	router.Use(cors.New(config))
+	router = gin.New()  
+	router.Use(CORSMiddleware())
 
 	log.Print("server is running at port: ", s.port)
 	log.Fatal(router.Run(":"+s.port))

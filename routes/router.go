@@ -48,11 +48,24 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 		}
 	}
 
-	main.Use(gin.Logger(), gin.Recovery())
-
 	main.Use(cors.New(cors.Config{
-		AllowAllOrigins: true,
+		AllowOrigins:     []string{"https://myxml.in"},
+		AllowMethods:     []string{"PUT", "PATCH", "GET","POST"},
+		AllowHeaders:     []string{"Origin"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		AllowOriginFunc: func(origin string) bool {
+			return origin == "https://github.com"
+		},
+		MaxAge: 12 * time.Hour,
 	}))
+
+
+	// main.Use(gin.Logger(), gin.Recovery())
+
+	// main.Use(cors.New(cors.Config{
+	// 	AllowAllOrigins: true,
+	// }))
 
 	return router;
 }

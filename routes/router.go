@@ -3,7 +3,7 @@ import (
 	// "net/http"
 	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/gin-gonic/gin"
-	// "github.com/gin-contrib/cors"
+	"github.com/gin-contrib/cors"
 	// "github.com/itsjamie/gin-cors"
 	// "time"
 	// "github.com/rs/cors"
@@ -47,6 +47,10 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 			// catalogData.DELETE("/:id", controllers.DeleteCatalogData)
 		}
 	}
+
+	main.Use(cors.New(cors.Config{
+		AllowAllOrigins: true,
+	}))
 
 	return router;
 }

@@ -28,7 +28,7 @@ func (s *Server)Run(){
 
 	router := routes.ConfigRoutes(s.server)
 
-	router = gin.New()  
+	// router = gin.New()  
 	// router.Use(cors.New(cors.Config{
 	// 	AllowOrigins:     []string{"*"},
 	// 	AllowMethods:     []string{"PUT", "PATCH","GET"},

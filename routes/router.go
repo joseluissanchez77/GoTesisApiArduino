@@ -1,6 +1,7 @@
 package routes
 import (
 
+
 	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/gin-gonic/gin"
 )
@@ -8,7 +9,8 @@ import (
 func ConfigRoutes(router *gin.Engine) *gin.Engine{
 
 
-	main := router.Group("api/v1")
+
+	main := router.Group("/api/v1")
 	{
 		sensorData := main.Group("sensor-data")
 		{
@@ -39,13 +41,13 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 		{
 			// catalogData.GET("/:id", controllers.ShowCatalogData)
 			// catalogData.GET("/last-record", controllers.LastRecordCatalogData)
-			catalogData.GET("/", controllers.ShowAllCatalogData)
+			catalogData.GET("", controllers.ShowAllCatalogData)
 			// catalogData.POST("/", controllers.CreateCatalogData)
 			// catalogData.PUT("/", controllers.UpdateCatalogData)
 			// catalogData.DELETE("/:id", controllers.DeleteCatalogData)
 		}
 	}
 
-	
 	return router;
 }
+

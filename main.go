@@ -16,31 +16,7 @@ func main(){
 	database.StartDB()
 	
 	server := server.NewServer()
-//  router = gin.New() 
-// 	router.Use(cors.New(cors.Config{
-// 		AllowOrigins:     []string{"*"},
-// 		AllowMethods:     []string{"PUT", "PATCH", "GET"},
-// 		AllowHeaders:     []string{"Origin"},
-// 		ExposeHeaders:    []string{"Content-Length"},
-// 		AllowCredentials: true,
-// 		AllowOriginFunc: func(origin string) bool {
-// 			return origin == "https://github.com"
-// 		},
-// 		MaxAge: 12 * time.Hour,
-// 	}))
-	// router := gin.Default()
 
-	// router.Use(cors.New(cors.Config{
-    //     AllowOrigins:     []string{"*"},
-    //     AllowMethods:     []string{"PUT", "PATCH","GET","POST"},
-    //     AllowHeaders:     []string{"Origin"},
-    //     ExposeHeaders:    []string{"Content-Length"},
-    //     AllowCredentials: true,
-    //     AllowOriginFunc: func(origin string) bool {
-    //         return origin == "https://github.com"
-    //     },
-    //     MaxAge: 12 * time.Hour,
-    // }))
 	server.Run()
 }
 

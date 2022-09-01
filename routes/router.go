@@ -1,12 +1,8 @@
 package routes
 import (
-	// "net/http"
+
 	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/gin-gonic/gin"
-	// "github.com/gin-contrib/cors"
-	"github.com/itsjamie/gin-cors"
-	"time"
-	// "github.com/rs/cors"
 )
 
 func ConfigRoutes(router *gin.Engine) *gin.Engine{
@@ -50,36 +46,6 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 		}
 	}
 
-
-	config := cors.Config{
-		Origins:         "*",
-		RequestHeaders:  "Authorization",
-		Methods:         "GET, POST, PUT",
-		Credentials:     false,
-		ValidateHeaders: false,
-		MaxAge:          1 * time.Minute,
-	}
-
-	main.Use(cors.Middleware(config));
-
-	// main.Use(cors.New(cors.Config{
-	// 	AllowOrigins:     []string{"https://myxml.in"},
-	// 	AllowMethods:     []string{"PUT", "PATCH", "GET","POST"},
-	// 	AllowHeaders:     []string{"Origin"},
-	// 	ExposeHeaders:    []string{"Content-Length"},
-	// 	AllowCredentials: true,
-	// 	AllowOriginFunc: func(origin string) bool {
-	// 		return origin == "https://github.com"
-	// 	},
-	// 	MaxAge: 12 * time.Hour,
-	// }))
-
-
-	// main.Use(gin.Logger(), gin.Recovery())
-
-	// main.Use(cors.New(cors.Config{
-	// 	AllowAllOrigins: true,
-	// }))
-
+	
 	return router;
 }

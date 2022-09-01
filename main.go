@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"time"
 	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/joseluissanchez77/GoTesisApiArduino/database"
@@ -42,7 +43,8 @@ func main(){
         c.JSON(200, gin.H{"message": "Api Arduino!"})
     })
 	router.GET("/api/v1/catalog-data", controllers.ShowAllCatalogData)
-	router.Run(":9001")	
+	router.Run(os.Getenv("PORT"))	
+	// router.Run(":9001")	
 		
 }
 

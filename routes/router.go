@@ -20,7 +20,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 	// 	MaxAge: 12 * time.Hour,
 	// }))
 
-	router := gin.Default()
+	// // router := gin.Default()
 	// same as
 	// config := cors.DefaultConfig()
 	// config.AllowAllOrigins = true

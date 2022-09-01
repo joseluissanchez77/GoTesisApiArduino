@@ -2,7 +2,7 @@ package main
 
 import (
 	"time"
-	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
+	// "github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/joseluissanchez77/GoTesisApiArduino/database"
 	"github.com/gin-gonic/gin"
     "github.com/gin-contrib/cors"

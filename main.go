@@ -2,7 +2,7 @@ package main
 
 import (
 	"time"
-	// "github.com/joseluissanchez77/GoTesisApiArduino/controllers"
+	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/joseluissanchez77/GoTesisApiArduino/database"
 	"github.com/gin-gonic/gin"
     "github.com/gin-contrib/cors"
@@ -42,9 +42,8 @@ func main(){
         c.JSON(200, gin.H{"message": "Api Arduino!"})
     })
 
-	router.GET("/api/v1/catalog-data", func(c *gin.Context) {
-        c.JSON(200, gin.H{"message": "Api Arduino!"})
-    })
+	
+	router.GET("/api/v1/last-record", controllers.LastRecordSensorData)
 	// router.GET("/api/v1/catalog-data", controllers.ShowAllCatalogData)
 	router.Run()	
 	// router.Run(":9001")	

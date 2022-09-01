@@ -37,7 +37,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 		{
 			sensorData.GET(":id", controllers.ShowSensorData)
 			sensorData.GET("last-record", controllers.LastRecordSensorData)
-			sensorData.GET("", controllers.ShowAllSensorData)
+			sensorData.GET("/", controllers.ShowAllSensorData)
 			sensorData.POST("", controllers.CreateSensorData)
 			sensorData.PUT("", controllers.UpdateSensorData)
 			sensorData.DELETE(":id", controllers.DeleteSensorData)

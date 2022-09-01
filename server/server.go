@@ -26,9 +26,11 @@ func NewServer() Server{
 
 func (s *Server)Run(){
 
-	s.Use(cors.New(cors.Config{
+	router := routes.ConfigRoutes(s.server)
+
+	router.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"*"},
-		AllowMethods:     []string{"PUT", "PATCH". "GET"},
+		AllowMethods:     []string{"PUT", "PATCH", "GET"},
 		AllowHeaders:     []string{"Origin"},
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
@@ -37,8 +39,6 @@ func (s *Server)Run(){
 		},
 		MaxAge: 12 * time.Hour,
 	}))
-	router := routes.ConfigRoutes(s.server)
-
 	
 
 	// router = gin.New()  

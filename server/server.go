@@ -2,12 +2,12 @@ package server
 
 import (
 	"log"
-	"time"
+	// "time"
 	"github.com/joseluissanchez77/GoTesisApiArduino/routes"
 	"github.com/gin-gonic/gin"
 	"os"
 	// "github.com/itsjamie/gin-cors"
-	"github.com/gin-contrib/cors"
+	// "github.com/gin-contrib/cors"
 	
 )
 
@@ -27,19 +27,6 @@ func NewServer() Server{
 func (s *Server)Run(){
 
 	router := routes.ConfigRoutes(s.server)
-
-	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"*"},
-		AllowMethods:     []string{"PUT", "PATCH", "GET"},
-		AllowHeaders:     []string{"Origin"},
-		ExposeHeaders:    []string{"Content-Length"},
-		AllowCredentials: true,
-		AllowOriginFunc: func(origin string) bool {
-			return origin == "https://github.com"
-		},
-		MaxAge: 12 * time.Hour,
-	}))
-	
 
 	// router = gin.New()  
 	// router.Use(cors.New(cors.Config{

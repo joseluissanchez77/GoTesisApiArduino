@@ -1,7 +1,7 @@
 package routes
 import (
 	"github.com/gin-contrib/cors"
-	"time"
+	// "time"
 	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/gin-gonic/gin"
 )

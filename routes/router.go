@@ -24,6 +24,8 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 			sensorData.DELETE("/:id", controllers.DeleteSensorData)
 		}
 
+		
+
 		parameterData := main.Group("parameter-data")
 		{
 			// parameterData.GET("/:id", controllers.ShowParameterData)
@@ -46,19 +48,23 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 			// catalogData.PUT("/", controllers.UpdateCatalogData)
 			// catalogData.DELETE("/:id", controllers.DeleteCatalogData)
 		}
+
+		catalogData.Use(cors.New(cors.Config{
+			AllowAllOrigins: true,
+		}))
 	}
 
-	main.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://myxml.in"},
-		AllowMethods:     []string{"PUT", "PATCH", "GET","POST"},
-		AllowHeaders:     []string{"Origin"},
-		ExposeHeaders:    []string{"Content-Length"},
-		AllowCredentials: true,
-		AllowOriginFunc: func(origin string) bool {
-			return origin == "https://github.com"
-		},
-		MaxAge: 12 * time.Hour,
-	}))
+	// main.Use(cors.New(cors.Config{
+	// 	AllowOrigins:     []string{"https://myxml.in"},
+	// 	AllowMethods:     []string{"PUT", "PATCH", "GET","POST"},
+	// 	AllowHeaders:     []string{"Origin"},
+	// 	ExposeHeaders:    []string{"Content-Length"},
+	// 	AllowCredentials: true,
+	// 	AllowOriginFunc: func(origin string) bool {
+	// 		return origin == "https://github.com"
+	// 	},
+	// 	MaxAge: 12 * time.Hour,
+	// }))
 
 
 	// main.Use(gin.Logger(), gin.Recovery())

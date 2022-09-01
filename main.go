@@ -1,10 +1,10 @@
 package main
 
 import (
-	"time"
-	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
+	"github.com/joseluissanchez77/GoTesisApiArduino/server"
+
 	"github.com/joseluissanchez77/GoTesisApiArduino/database"
-	"github.com/gin-gonic/gin"
+
     // "github.com/gin-contrib/cors"
 )
 
@@ -13,7 +13,7 @@ import (
 func main(){
 
 
-	router := gin.Default()
+
     // router.Use(cors.Default())
     // router.GET("/", func(c *gin.Context) {
     //     c.JSON(200, gin.H{"message": "CORS works!"})

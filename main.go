@@ -5,7 +5,7 @@ import (
 	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/joseluissanchez77/GoTesisApiArduino/database"
 	"github.com/gin-gonic/gin"
-    "github.com/gin-contrib/cors"
+    // "github.com/gin-contrib/cors"
 )
 
 
@@ -23,29 +23,29 @@ func main(){
 	
 	database.StartDB()
 	
-	// server := server.NewServer()
-	// server.Run()
+	server := server.NewServer()
+	server.Run()
 
-	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"*"},
-		AllowMethods:     []string{"PUT", "PATCH","GET","POST"},
-		AllowHeaders:     []string{"Origin"},
-		ExposeHeaders:    []string{"Content-Length"},
-		AllowCredentials: true,
-		AllowOriginFunc: func(origin string) bool {
-		  return origin == "https://github.com"
-		},
-		MaxAge: 12 * time.Hour,
-	  }))
+	// // router.Use(cors.New(cors.Config{
+	// // 	AllowOrigins:     []string{"*"},
+	// // 	AllowMethods:     []string{"PUT", "PATCH","GET","POST"},
+	// // 	AllowHeaders:     []string{"Origin"},
+	// // 	ExposeHeaders:    []string{"Content-Length"},
+	// // 	AllowCredentials: true,
+	// // 	AllowOriginFunc: func(origin string) bool {
+	// // 	  return origin == "https://github.com"
+	// // 	},
+	// // 	MaxAge: 12 * time.Hour,
+	// //   }))
 
-	router.GET("/", func(c *gin.Context) {
-        c.JSON(200, gin.H{"message": "Api Arduino!"})
-    })
+	// // router.GET("/", func(c *gin.Context) {
+    // //     c.JSON(200, gin.H{"message": "Api Arduino!"})
+    // // })
 
 	
-	router.GET("/api/v1/last-record", controllers.LastRecordSensorData)
+	// // router.GET("/api/v1/last-record", controllers.LastRecordSensorData)
 	// router.GET("/api/v1/catalog-data", controllers.ShowAllCatalogData)
-	router.Run()	
+	// // router.Run()	
 	// router.Run(":9001")	
 		
 }

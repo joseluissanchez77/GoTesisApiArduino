@@ -6,7 +6,7 @@ import (
 	// "time"
 	"github.com/joseluissanchez77/GoTesisApiArduino/routes"
 	"github.com/gin-gonic/gin"
-	// "os"
+	"os"
 
 )
 
@@ -17,8 +17,8 @@ type Server struct{
 
 func NewServer() Server{
 	return Server{
-		// port: os.Getenv("PORT"),
-		port: "9001",
+		port: os.Getenv("PORT"),
+		// port: "9001",
 		server: gin.Default(),
 	}
 }
@@ -35,18 +35,5 @@ func (s *Server)Run(){
 }
 
 
-// func Cors() gin.HandlerFunc {
-//     return func(c *gin.Context) {
-        
-// 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*") 
-// 		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE,UPDATE") 
-// 		c.Writer.Header().Set("Access-Control-Allow-Headers", "Authorization, Content-Length, X-CSRF-Token, Token,session")
-// 		c.Writer.Header().Set("Access-Control-Expose-Headers", "Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers") 
-// 		c.Writer.Header().Set("Access-Control-Max-Age", "172800") 
-// 		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")                                                                                                                                                                                                                          
-        
-//         c.Next()
-//     }
-// }
 
 

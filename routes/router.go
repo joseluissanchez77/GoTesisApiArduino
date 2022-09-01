@@ -1,13 +1,29 @@
 package routes
 import (
-
-
+	"github.com/gin-contrib/cors"
+	"time"
 	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/gin-gonic/gin"
 )
 
 func ConfigRoutes(router *gin.Engine) *gin.Engine{
 
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"*"},
+		AllowMethods:     []string{"PUT", "PATCH","GET","POST"},
+		AllowHeaders:     []string{"Origin"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		AllowOriginFunc: func(origin string) bool {
+			return origin == "https://github.com"
+		},
+		MaxAge: 12 * time.Hour,
+	}))
+
+	router.GET("/", func(c *gin.Context) {
+        c.JSON(200, gin.H{"message": "Api Arduino!"})
+    })
+	
 	main := router.Group("/api/v1")
 	{
 		sensorData := main.Group("sensor-data")

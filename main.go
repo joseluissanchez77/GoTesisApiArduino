@@ -41,7 +41,11 @@ func main(){
 	router.GET("/", func(c *gin.Context) {
         c.JSON(200, gin.H{"message": "Api Arduino!"})
     })
-	router.GET("/api/v1/catalog-data", controllers.ShowAllCatalogData)
+
+	router.GET("/api/v1/catalog-data", func(c *gin.Context) {
+        c.JSON(200, gin.H{"message": "Api Arduino!"})
+    })
+	// router.GET("/api/v1/catalog-data", controllers.ShowAllCatalogData)
 	router.Run()	
 	// router.Run(":9001")	
 		

@@ -2,7 +2,7 @@ package controllers
 
 import (
 	// "fmt"
-	// "net/http"
+	"net/http"
 	"github.com/joseluissanchez77/GoTesisApiArduino/models"
 	"github.com/joseluissanchez77/GoTesisApiArduino/database"
 	"github.com/gin-gonic/gin"
@@ -41,6 +41,5 @@ func ShowAllCatalogData(c *gin.Context){
 	}
 
 
-	// c.JSON(http.StatusOK, catalogDataModel)
-	c.JSON(200, gin.H{"message": "Api Arduino!"})
+	c.JSON(http.StatusOK, catalogDataModel)
 }

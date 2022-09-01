@@ -3,7 +3,7 @@ import (
 	// "net/http"
 	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/gin-gonic/gin"
-	"github.com/gin-contrib/cors"
+	// "github.com/gin-contrib/cors"
 	// "github.com/itsjamie/gin-cors"
 	// "time"
 	// "github.com/rs/cors"

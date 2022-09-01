@@ -2,11 +2,11 @@ package server
 
 import (
 	"log"
-	"time"
+	// "time"
 	"github.com/joseluissanchez77/GoTesisApiArduino/routes"
 	"github.com/gin-gonic/gin"
 	"os"
-	"github.com/itsjamie/gin-cors"
+	// "github.com/itsjamie/gin-cors"
 	// "github.com/gin-contrib/cors"
 	
 )
@@ -28,16 +28,7 @@ func (s *Server)Run(){
 
 	router := routes.ConfigRoutes(s.server)
 
-	config := cors.Config{
-		Origins:         "*",
-		RequestHeaders:  "Authorization",
-		Methods:         "GET, POST, PUT",
-		Credentials:     true,
-		ValidateHeaders: false,
-		MaxAge:          1 * time.Minute,
-	}
 
-	router.Use(cors.Middleware(config))
 	// router = gin.New()  
 	// router.Use(cors.New(cors.Config{
 	// 	AllowOrigins:     []string{"*"},

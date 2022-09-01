@@ -4,8 +4,8 @@ import (
 	"github.com/joseluissanchez77/GoTesisApiArduino/controllers"
 	"github.com/gin-gonic/gin"
 	// "github.com/gin-contrib/cors"
-	// "github.com/itsjamie/gin-cors"
-	// "time"
+	"github.com/itsjamie/gin-cors"
+	"time"
 	// "github.com/rs/cors"
 )
 
@@ -49,6 +49,18 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 			// catalogData.DELETE("/:id", controllers.DeleteCatalogData)
 		}
 	}
+
+
+	config := cors.Config{
+		Origins:         "*",
+		RequestHeaders:  "Authorization",
+		Methods:         "GET, POST, PUT",
+		Credentials:     false,
+		ValidateHeaders: false,
+		MaxAge:          1 * time.Minute,
+	}
+
+	main.Use(cors.Middleware(config));
 
 	// main.Use(cors.New(cors.Config{
 	// 	AllowOrigins:     []string{"https://myxml.in"},

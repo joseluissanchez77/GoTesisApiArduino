@@ -23,16 +23,16 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 	router.GET("/", func(c *gin.Context) {
         c.JSON(200, gin.H{"message": "Api Arduino!"})
     })
-	
+
 	main := router.Group("/api/v1")
 	{
 		sensorData := main.Group("sensor-data")
 		{
 			sensorData.GET("/:id", controllers.ShowSensorData)
 			sensorData.GET("/last-record", controllers.LastRecordSensorData)
-			sensorData.GET("/", controllers.ShowAllSensorData)
-			sensorData.POST("/", controllers.CreateSensorData)
-			sensorData.PUT("/", controllers.UpdateSensorData)
+			sensorData.GET("", controllers.ShowAllSensorData)
+			sensorData.POST("", controllers.CreateSensorData)
+			sensorData.PUT("", controllers.UpdateSensorData)
 			sensorData.DELETE("/:id", controllers.DeleteSensorData)
 		}
 

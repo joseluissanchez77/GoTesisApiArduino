@@ -8,8 +8,6 @@ import (
 
 func ConfigRoutes(router *gin.Engine) *gin.Engine{
 
-
-
 	main := router.Group("/api/v1")
 	{
 		sensorData := main.Group("sensor-data")
@@ -50,4 +48,5 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 
 	return router;
 }
+
 

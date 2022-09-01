@@ -40,11 +40,7 @@ func ShowAllCatalogData(c *gin.Context){
 		return
 	}
 
-	
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-	
-
 
 	c.JSON(http.StatusOK, catalogDataModel)
-	// c.JSON(http.StatusOK, c.Request.Header)
+
 }

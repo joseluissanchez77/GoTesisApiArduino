@@ -26,19 +26,19 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 
 	main := router.Group("/api/v1")
 	{
-		sensorData := main.Group("sensor-data")
+		sensorData := main.Group("/sensor-data")
 		{
 			sensorData.GET("/:id", controllers.ShowSensorData)
-			sensorData.GET("/last-record", controllers.LastRecordSensorData)
-			sensorData.GET("", controllers.ShowAllSensorData)
-			sensorData.POST("", controllers.CreateSensorData)
-			sensorData.PUT("", controllers.UpdateSensorData)
+			sensorData.GET("last-record", controllers.LastRecordSensorData)
+			sensorData.GET("/", controllers.ShowAllSensorData)
+			sensorData.POST("/", controllers.CreateSensorData)
+			sensorData.PUT("/", controllers.UpdateSensorData)
 			sensorData.DELETE("/:id", controllers.DeleteSensorData)
 		}
 
 		
 
-		parameterData := main.Group("parameter-data")
+		parameterData := main.Group("/parameter-data")
 		{
 			// parameterData.GET("/:id", controllers.ShowParameterData)
 			// parameterData.GET("/last-record", controllers.LastRecordparameterData)
@@ -51,7 +51,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine{
 			// parameterData.DELETE("/:id", controllers.DeleteparameterData)
 		}
 
-		catalogData := main.Group("catalog-data")
+		catalogData := main.Group("/catalog-data")
 		{
 			// catalogData.GET("/:id", controllers.ShowCatalogData)
 			// catalogData.GET("/last-record", controllers.LastRecordCatalogData)

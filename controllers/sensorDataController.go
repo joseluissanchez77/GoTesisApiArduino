@@ -234,7 +234,27 @@ func ShowAllSensorData(c *gin.Context){
 
 	var sensordata []models.SensorData
 
-	err := db.Order("id desc").Find(&sensordata).Error
+	// start_date := c.Param("start_date")
+	// end_date := c.Param("end_date")
+
+	
+	// if start_date != "" && end_date != ""{
+	// 	err := db.Where("time_and_date_local::date BETWEEN ? AND ?", c.Query("start_date"), c.Query("end_date")).Order("id desc").Find(&sensordata).Error	
+
+	// 	if err != nil{
+	// 		c.JSON(400, gin.H{
+	// 			"error" : "Error al obtener lista de datos sensor: "+err.Error(),
+	// 		})
+	// 		return
+	// 	}
+	// 	c.JSON(200, sensordata)
+	// 	return
+		
+	// }
+
+	err := db.Where("time_and_date_local::date BETWEEN ? AND ?", c.Query("start_date") , c.Query("end_date") ).Order("id desc").Find(&sensordata).Error	
+
+	// err := db.Order("id desc").Find(&sensordata).Error
 
 	if err != nil{
 		c.JSON(400, gin.H{
@@ -242,9 +262,17 @@ func ShowAllSensorData(c *gin.Context){
 		})
 		return
 	}
-
-
 	c.JSON(200, sensordata)
+	
+	// if c.BindJSON(c.Query("start_date"))!= nil{
+	// 	// log.Println( c.Query("start_date"))
+	// 	log.Println("hola")
+	// }
+	// if c.Query("start_date")!=nil &&  c.Query("end_date")!=nil {
+	// 	err := db.Where("time_and_date_local::date BETWEEN ? AND ?", c.Query("start_date"), c.Query("end_date")).Order("id desc").Find(&sensordata).Error
+	// }else{
+	// }
+
 }
 
 
